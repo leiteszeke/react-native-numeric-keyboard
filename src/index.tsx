@@ -1,23 +1,30 @@
 import React from "react";
 import { View, Text, Image, TouchableWithoutFeedback } from "react-native";
-import deleteIcon from "./images/icon_delete.png";
-import styles, { keyStyle, BG_COLOR } from "./styles";
+import deleteIcon from "./images/delete_icon.png";
+import styles, { keyStyle } from "./styles";
 
-const numberKeys = [
+type NumberPadItem = {
+  number: string;
+  letters: string;
+};
+
+type NumberPadRow = NumberPadItem[];
+
+const numberKeys: NumberPadRow[] = [
   [
-    { mainText: "1", otherText: "" },
-    { mainText: "2", otherText: "ABC" },
-    { mainText: "3", otherText: "DEF" },
+    { number: "1", letters: "" },
+    { number: "2", letters: "ABC" },
+    { number: "3", letters: "DEF" },
   ],
   [
-    { mainText: "4", otherText: "GHI" },
-    { mainText: "5", otherText: "JKL" },
-    { mainText: "6", otherText: "MNO" },
+    { number: "4", letters: "GHI" },
+    { number: "5", letters: "JKL" },
+    { number: "6", letters: "MNO" },
   ],
   [
-    { mainText: "7", otherText: "PQRS" },
-    { mainText: "8", otherText: "TUV" },
-    { mainText: "9", otherText: "WXYZ" },
+    { number: "7", letters: "PQRS" },
+    { number: "8", letters: "TUV" },
+    { number: "9", letters: "WXYZ" },
   ],
 ];
 
@@ -57,9 +64,9 @@ const Keyboard = ({
     return onKeyPress?.(key);
   };
 
-  const renderOtherText = (key: { otherText?: string }) => {
+  const renderOtherText = (key: NumberPadItem) => {
     if (disableOtherText !== true) {
-      return <Text style={keyStyle.otherText}>{key.otherText}</Text>;
+      return <Text style={keyStyle.otherText}>{key.letters}</Text>;
     }
 
     return null;
@@ -74,7 +81,7 @@ const Keyboard = ({
     () =>
       disableClearButtonBackground !== true
         ? keyStyle.bg_d2d5dc
-        : keyStyle.bgLess,
+        : keyStyle.bgLessL,
     [disableClearButtonBackground]
   );
 
@@ -82,7 +89,7 @@ const Keyboard = ({
     () =>
       disableDotButtonBackground !== true
         ? keyStyle.bg_d2d5dc
-        : keyStyle.bgLess,
+        : keyStyle.bgLessL,
     [disableDotButtonBackground]
   );
 
@@ -91,17 +98,14 @@ const Keyboard = ({
     [keyboardType]
   );
 
-  const renderKey = (
-    key: { mainText?: string; otherText?: string },
-    index: number
-  ) => (
+  const renderKey = (key: NumberPadItem, index: number) => (
     <TouchableWithoutFeedback
       key={index}
       style={keyStyle.wrapper}
-      onPress={onPress(key.mainText)}
+      onPress={onPress(key.number)}
     >
       <View style={[keyStyle.bd, borderColor]}>
-        <Text style={keyStyle.mainText}>{key.mainText}</Text>
+        <Text style={keyStyle.mainText}>{key.number}</Text>
         {renderOtherText(key)}
       </View>
     </TouchableWithoutFeedback>

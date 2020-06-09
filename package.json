@@ -1,7 +1,7 @@
 {
   "name": "react-native-numeric-keyboard",
   "version": "1.0.0",
-  "main": "src/index.tsx",
+  "main": "dist/index.js",
   "files": [
     "src"
   ],
@@ -13,5 +13,12 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/leiteszeke/react-native-numeric-keyboard/issues"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.0",
+    "@types/react": "^16.9.35",
+    "@types/react-native": "^0.62.13",
+    "@types/react-test-renderer": "^16.9.2",
+    "typescript": "^3.9.5"
   }
 }
