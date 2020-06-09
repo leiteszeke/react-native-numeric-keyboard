@@ -1,0 +1,17 @@
+{
+  "name": "react-native-numeric-keyboard",
+  "version": "1.0.0",
+  "main": "src/index.tsx",
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leiteszeke/react-native-numeric-keyboard.git"
+  },
+  "author": "Ezequiel Leites <ezequiel@leites.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leiteszeke/react-native-numeric-keyboard/issues"
+  }
+}
